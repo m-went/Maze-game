@@ -155,7 +155,7 @@ function makeMaze() {
       label: 'pikachu',
       render: {
         sprite: {
-          texture: 'file:///C:/Users/oktaw/Downloads/cdnlogo.com_pokemon%20(1).svg',
+          texture: 'assets/pikachu.svg',
           yScale: pikachuScale,
           xScale: pikachuScale,
         },
