@@ -1,34 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      body {
-        margin: 0;
-      }
-      .winner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        height: 100vh;
-        width: 100vw;
-      }
-      .hidden {
-        display: none;
-      }
-      h1 {
-        font-size: 64 px;
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="winner hidden"><h1>You Win!</h1></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maze game</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <section id="main-menu" class="main-menu-visible">
+    <ul class="main-menu-buttons">
+      <li><button id="new-game" class="menu-buttons">New game</button></li>
+      <li><button id="options" class="menu-buttons">Options</button></li>
+      <li><button id="highscore" class="menu-buttons">Highscore</button></li>
+    </ul>
+  </section>
+  <section id="options-menu" class="options-menu-visible hidden">
+    <h1>Options</h1>
+    <form class="menu-form" id="options-form" method="get">
+      <div class="options-setter">
+        <h2>SET DIFFICULTY</h2>
+        <ul class="menu-list">
+          <li class="difficulty-option">
+            <input type="radio" id="easy" name="difficulty" value="easy" checked>
+            <label for="easy">Easy</label>
+          </li>
+          <li class="difficulty-option">
+            <input type="radio" id="normal" name="difficulty" value="normal">
+            <label for="normal">Normal</label>
+          </li>
+          <li class="difficulty-option">
+            <input type="radio" id="hard" name="difficulty" value="hard">
+            <label for="hard">Hard</label>
+          </li>
+        </ul>
+      </div>
+      <button type="submit" class="return-button">Back to menu</button>
+    </form>
+  </section>
+  <section id="highscore-menu" class="highscore-menu-visible hidden">
+    <h1>HIGHSCORE</h1>
+    <form class="menu-form">
+      <div class="options-setter">
+        <ul class="menu-list">
+          <li class="difficulty-option">
+            <p class="scoreboard-difficulty-name">Easy:</p>
+            <span class="scoreboard-points" id="easy-highscore">0</span>
+          </li>
+          <li class="difficulty-option">
+            <p class="scoreboard-difficulty-name">Normal:</p>
+            <span class="scoreboard-points" id="normal-highscore">0</span>
+          </li>
+          <li class="difficulty-option">
+            <p class="scoreboard-difficulty-name">Hard:</p>
+            <span class="scoreboard-points" id="hard-highscore">0</span>
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="return-button">Back to menu</button>
+    </form>
+  </section>
+  <section id="maze-game" class="hidden">
+    <div class="winner hidden">
+      <h1>You Win!</h1>
+      <button type="button" class="return-button reset-maze">Back to menu</button>
+    </div>
+    <div class="game-top-info">
+      <div class="time-container">
+        <p class="time">
+          <span id="seconds">00</span>:<span id="tens">00</span>
+        </p>
+      </div>
+      <button type="button" class="return-button in-game-btn reset-maze">Back to menu</button>
+    </div>
+    <div id="gameField" class="gameField-visible"></div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+  <script src="setEnvironment.js"></script>
+  <script src="mazeLogic.js"></script>
+  <script src="app.js"></script>
+  <script src="menuLogic.js"></script>
+  <script src="utils/timer.js"></script>
+</body>
+
 </html>
